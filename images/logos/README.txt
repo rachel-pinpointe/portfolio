@@ -1,14 +1,14 @@
 Stack logos used on the home page and case study pages
 
-Files in this folder (cream on transparent PNG, about 96 to 107px tall):
+Files in this folder (cream on transparent PNG, 96px tall):
   apollo.png      Apollo       user-supplied
   fibery.png      Fibery       user-supplied
   lavender.png    Lavender     user-supplied
   paradigm.png    Paradigm     user-supplied
   salesforce.png  Salesforce   user-supplied
   sybill.png      Sybill       user-supplied
-  slack.png       Slack        user-supplied (recolored to cream, background removed)
-  zapier.png      Zapier       user-supplied (recolored to cream, background removed)
+  slack.png       Slack        user-supplied cream file
+  zapier.png      Zapier       user-supplied cream file
 
 Inline SVG icons (paths copied into the HTML, no files here):
   Claude Code  simple-icons 16.36.0, slug claudecode
