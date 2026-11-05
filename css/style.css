@@ -122,7 +122,7 @@ a:focus-visible, [tabindex]:focus-visible { outline: 3px solid var(--ink); outli
 }
 
 /* Sections */
-.block { margin-top: 96px; }
+.block { margin-top: 88px; }
 
 /* Hero */
 .hero { margin-top: 72px; }
@@ -178,7 +178,6 @@ a:focus-visible, [tabindex]:focus-visible { outline: 3px solid var(--ink); outli
 .sell-stats .lbl { font-size: 18px; line-height: 1.35; grid-column: 2; }
 
 /* Systems rows */
-.systems { border-top: var(--rule); }
 .sys {
   display: grid;
   grid-template-columns: 120px minmax(0, 1fr) minmax(0, 1.4fr);
@@ -187,6 +186,7 @@ a:focus-visible, [tabindex]:focus-visible { outline: 3px solid var(--ink); outli
   border-bottom: var(--rule);
   align-items: baseline;
 }
+.sys:last-child { border-bottom: 0; }
 .sys .idx {
   font-family: var(--display);
   font-size: 56px;
@@ -232,12 +232,13 @@ figure { margin: 0; }
   box-shadow: var(--shadow);
 }
 
-/* Stack logos: shared item, scrolling band (home), static row (case studies) */
-.it { display: flex; align-items: center; gap: 12px; flex: none; color: var(--cream); }
-.it img { display: block; max-width: none; }
-.it svg { display: block; flex: none; }
-.it span { font-family: var(--display); font-size: 24px; line-height: 1; letter-spacing: -0.02em; white-space: nowrap; }
+/* Stack logos. Item sizes scale with --u (1px = spec size); only case rows shrink it. */
+.it { display: flex; align-items: center; gap: min(12px, calc(12 * var(--u, 1px))); flex: none; color: var(--cream); }
+.it img { display: block; max-width: none; width: auto; height: min(calc(var(--h) * 1px), calc(var(--h) * var(--u, 1px))); }
+.it svg { display: block; flex: none; width: min(30px, calc(30 * var(--u, 1px))); height: min(30px, calc(30 * var(--u, 1px))); }
+.it span { font-family: var(--display); font-size: min(20px, calc(20 * var(--u, 1px))); line-height: 1; letter-spacing: -0.02em; white-space: nowrap; }
 
+/* Home: scrolling band */
 .marq {
   display: flex;
   overflow: hidden;
@@ -262,19 +263,33 @@ figure { margin: 0; }
 .marq:hover .track { animation-play-state: paused; }
 @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-100%); } }
 
-.logo-row {
-  list-style: none;
-  margin: 0;
-  padding: 24px 28px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 28px;
+/* Case studies: one static line at 900px and up, scrolling band below */
+.logo-band {
+  container-type: inline-size;
   background: var(--ink);
   border-top: var(--rule);
   border-bottom: var(--rule);
+  overflow: hidden;
 }
+.logo-row {
+  list-style: none;
+  margin: 0;
+  padding: 28px 40px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+@supports (container-type: inline-size) {
+  .logo-row { --u: min(1px, calc((100cqw - 80px - var(--gaps)) / var(--T))); }
+}
+.logo-row[aria-hidden="true"] { display: none; }
+.stack-caption { margin-top: 24px; max-width: 760px; }
+.stack-caption p { font-size: 17px; font-weight: 500; margin: 0 0 4px; }
+.stack-caption strong { font-weight: 700; }
 .after-row { margin-top: 32px; }
+.stack-caption + .after-row { margin-top: 24px; }
 
 /* Career */
 .role { border-top: var(--rule); padding: 24px 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 8px 32px; }
@@ -282,6 +297,7 @@ figure { margin: 0; }
 .role .meta { font-size: 16px; font-weight: 700; margin: 0; }
 .role > p { margin: 0; }
 .more { border-top: var(--rule); padding-top: 16px; font-size: 16px; }
+.heading + .role { border-top: 0; padding-top: 0; }
 
 /* Closing block */
 .closing {
@@ -354,6 +370,23 @@ figure { margin: 0; }
   .sell { grid-template-columns: minmax(0, 1fr); gap: 40px; }
   .sys { grid-template-columns: minmax(0, 1fr); gap: 12px; padding: 28px 0; }
   .about { flex-direction: column; gap: 40px; }
+  .logo-band {
+    display: flex;
+    margin: 0 calc(-1 * var(--pad));
+    padding: 28px 0;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  }
+  .logo-row, .logo-row[aria-hidden="true"] {
+    --u: 1px;
+    display: flex;
+    flex: none;
+    justify-content: flex-start;
+    gap: 72px;
+    padding: 0 36px;
+    animation: scroll 45s linear infinite;
+  }
+  .logo-band:hover .logo-row { animation-play-state: paused; }
   .portrait { width: 240px; height: 240px; align-self: center; }
   .role { grid-template-columns: minmax(0, 1fr); }
   .pair { grid-template-columns: minmax(0, 1fr); }
@@ -397,8 +430,39 @@ figure { margin: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .track { animation: none; }
-  .track[aria-hidden="true"] { display: none; }
-  .marq { overflow-x: auto; }
+  .track, .logo-row, .logo-row[aria-hidden="true"] { animation: none; }
+  .track[aria-hidden="true"], .logo-row[aria-hidden="true"] { display: none; }
+  .marq, .logo-band { overflow-x: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+
+/* Print and save as PDF: keep backgrounds, one static copy of each logo list */
+@media print {
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body { background: var(--teal); }
+  .skip { display: none; }
+  .track, .logo-row, .logo-row[aria-hidden="true"] { animation: none !important; transform: none !important; }
+  .track[aria-hidden="true"], .logo-row[aria-hidden="true"] { display: none !important; }
+  .marq, .logo-band {
+    overflow: visible;
+    margin-left: 0;
+    margin-right: 0;
+    -webkit-mask-image: none;
+    mask-image: none;
+    break-inside: avoid;
+  }
+  .track, .logo-row {
+    --u: 1px;
+    flex: 1 1 auto;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 20px 40px;
+    padding: 0 28px;
+  }
+  .logo-band { display: block; padding: 24px 0; }
+  .panel, .result, .sell-stats, .results li, figure { break-inside: avoid; }
+  .heading, .case-title { break-after: avoid; page-break-after: avoid; break-inside: avoid; }
+  .closing-inner { break-inside: avoid; page-break-inside: avoid; }
+  .panel.scroll { overflow: visible; }
+  .panel.scroll img { min-width: 0; }
 }
