@@ -4,8 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
+<meta name="description" content="4% reply rate and $450K of the $580K direct pipeline, built and run by one person.">
+<meta property="og:title" content="Outbound GTM system | Rachel Fiegler">
+<meta property="og:description" content="4% reply rate and $450K of the $580K direct pipeline, built and run by one person.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rachel-pinpointe.github.io/portfolio/outbound/">
+<meta property="og:image" content="https://rachel-pinpointe.github.io/portfolio/images/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <title>Outbound GTM system | Rachel Fiegler</title>
-<link rel="icon" href="data:,">
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="../fonts/archivo-black-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../css/style.css">
 </head>
@@ -14,7 +23,13 @@
 <div class="page">
   <header class="topbar">
     <a class="name" href="../">Rachel Fiegler</a>
-    <span class="tag">GTM systems / New York</span>
+    <nav class="nav" aria-label="Main">
+      <a class="nav-link" href="../">Home</a>
+      <a class="nav-link" href="../#sell">How I sell</a>
+      <a class="nav-link" href="../#systems">Systems</a>
+      <a class="nav-link" href="../#about">About</a>
+      <a class="btn" href="mailto:rachelfiegler@icloud.com">Email me</a>
+    </nav>
   </header>
 
   <main id="main">
@@ -29,14 +44,14 @@
 
     <section class="case-section" aria-labelledby="problem-h">
       <div class="text">
-        <h2 id="problem-h" class="label">Problem</h2>
+        <h2 id="problem-h" class="heading">Problem</h2>
         <p>Pinpointe pivoted to B2B with no playbook and no sales team. Every prospect needed research, a reason to reach out, and a personalized email, and that didn't scale by hand.</p>
       </div>
     </section>
 
     <section class="case-section" aria-labelledby="built-h">
       <div class="text">
-        <h2 id="built-h" class="label">What I built</h2>
+        <h2 id="built-h" class="heading">What I built</h2>
         <p>An automated outbound system in Claude Code that runs the full motion:</p>
         <ol>
           <li><strong>Signals:</strong> tracks eight signal types (job postings, hiring velocity, funding, layoffs and WARN notices, tech stack changes, Meta ads, news, and other) to find NYC companies that look like they're sending people to New York.</li>
@@ -53,14 +68,14 @@
 
     <section class="case-section" aria-labelledby="tracking-h">
       <div class="text">
-        <h2 id="tracking-h" class="label">Tracking</h2>
+        <h2 id="tracking-h" class="heading">Tracking</h2>
         <p>Fibery is the source of truth and tracker for the whole pipeline. Positive replies move into Contacts and Accounts in the CRM space.</p>
       </div>
     </section>
 
     <section class="case-section" aria-labelledby="guard-h">
       <div class="text">
-        <h2 id="guard-h" class="label">Guardrails and scale</h2>
+        <h2 id="guard-h" class="heading">Guardrails and scale</h2>
         <p>Contacts carry a 60-day re-sequence cooldown and a Do Not Contact status, so nobody gets emailed twice in a window or after opting out. The daily scan runs across about 1,500 companies.</p>
       </div>
       <figure class="shot">
@@ -71,8 +86,17 @@
 
     <section class="case-section" aria-labelledby="stack-h">
       <div class="text">
-        <h2 id="stack-h" class="label">Stack</h2>
-        <p>Claude Code, Apollo, Paradigm for lead lists, Lavender for email quality. Fibery as the source of truth and tracker. The agents run fully automated.</p>
+        <h2 id="stack-h" class="heading">Stack</h2>
+      </div>
+      <ul class="logo-row" aria-label="Stack">
+        <li class="it"><svg viewBox="0 0 24 24" width="38" height="38" fill="currentColor" aria-hidden="true" focusable="false"><path d="M21 10.5h3v3h-3v3h-1.5v3H18v-3h-1.5v3H15v-3H9v3H7.5v-3H6v3H4.5v-3H3v-3H0v-3h3v-6h18Zm-15 0h1.5v-3H6Zm10.5 0H18v-3h-1.5z"/></svg><span>Claude Code</span></li>
+        <li class="it"><img src="../images/logos/apollo.png" width="153" height="40" alt="Apollo"></li>
+        <li class="it"><img src="../images/logos/paradigm.png" width="213" height="40" alt="Paradigm"></li>
+        <li class="it"><img src="../images/logos/lavender.png" width="188" height="30" alt="Lavender"></li>
+        <li class="it"><img src="../images/logos/fibery.png" width="143" height="40" alt="Fibery"></li>
+      </ul>
+      <div class="text after-row">
+        <p>The agents run fully automated.</p>
         <p>Code: <a href="https://github.com/rachel-pinpointe/signal-driven-outbound">signal-driven-outbound</a> and <a href="https://github.com/rachel-pinpointe/hypersignal-gtm">hypersignal-gtm</a>.</p>
         <p>Built on the <a href="https://github.com/athm793/HyperSignal-Hiring">open-source HyperSignal-Hiring tool</a> (Apache 2.0).</p>
       </div>
@@ -80,7 +104,7 @@
 
     <section class="case-section" aria-labelledby="broke-h">
       <div class="text">
-        <h2 id="broke-h" class="label">What broke and how I fixed it</h2>
+        <h2 id="broke-h" class="heading">What broke and how I fixed it</h2>
         <p>Hiring Cafe, one of the signal sources, kept blocking calls and runs dragged on for hours. I built a check that catches a stalled call and kills it, then uses the companies' ATS URLs to bypass the block when possible. I also added redundancy with other providers so one blocked source can't stall the pipeline.</p>
       </div>
     </section>
@@ -102,6 +126,10 @@
       <h2 id="podcast-h" class="label">Podcast</h2>
       <p>I host Pinpointe Unfiltered. Episodes are on the <a href="https://www.youtube.com/@pinpointegroup/podcasts">Pinpointe Group YouTube channel</a>.</p>
     </section>
+    <div class="foot-row">
+      <span>Rachel Fiegler, New York</span>
+      <span>Built with Claude Code</span>
+    </div>
   </div>
 </footer>
 </body>
