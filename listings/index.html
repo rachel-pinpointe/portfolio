@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>NYC listings platform | Rachel Fiegler</title>
+<link rel="icon" href="data:,">
+<link rel="preload" href="../fonts/archivo-black-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="page">
+  <header class="topbar">
+    <a class="name" href="../">Rachel Fiegler</a>
+    <span class="tag">GTM systems / New York</span>
+  </header>
+
+  <main id="main">
+    <h1 class="case-title">NYC listings platform: shipped in one month with Claude Code</h1>
+    <p class="result"><strong>Result:</strong> 1,000+ listings, 6 agents using it, 3 to 5 hours saved per client search, phase 1 shipped in one month.</p>
+
+    <div class="diagram-wrap">
+      <div class="panel scroll" tabindex="0" role="region" aria-label="NYC listings platform diagram, scrolls sideways on small screens">
+        <img src="../images/listings.svg" width="1290" height="310" alt="Diagram of the NYC listings platform, one database for off-market listings that arrive in any format. Step 1, sources: emails, PDFs, docs, and spreadsheets from landlords and brokers. Step 2, parsers: a dedicated parser for each landlord source, replacing a single AI prompt. Step 3, database: one searchable record per listing in Supabase. Step 4, search: filters and map search with Mapbox. Step 5, agent view: role-based access for agents and managers, built with Next.js on Vercel. In use: 1,000+ listings, 6 agents, 3 to 5 hours saved per client search. Phase 1 shipped in one month.">
+      </div>
+    </div>
+
+    <section class="case-section" aria-labelledby="problem-h">
+      <div class="text">
+        <h2 id="problem-h" class="label">Problem</h2>
+        <p>Off-market listings arrive scattered across emails, PDFs, docs, and spreadsheets. Agents spent hours digging through them for every client search.</p>
+      </div>
+    </section>
+
+    <section class="case-section" aria-labelledby="built-h">
+      <div class="text">
+        <h2 id="built-h" class="label">What I built</h2>
+        <p>A listings platform, built with Claude Code and no engineering hire, that:</p>
+        <ol>
+          <li>Ingests off-market listings and parses them from whatever format they arrive in.</li>
+          <li>Puts them in one searchable database with map search.</li>
+          <li>Gives agents and managers role-based access.</li>
+        </ol>
+      </div>
+
+      <div class="pair">
+        <figure class="shot">
+          <a class="panel" href="../images/listings-email.png"><img src="../images/listings-email.png" width="1810" height="1556" loading="lazy" alt="Before: a landlord listing email with building addresses, open house times, viewing info, and a table of apartments with size, baths, and rent. The landlord notices and the phone number are blurred."></a>
+        </figure>
+        <figure class="shot">
+          <a class="panel" href="../images/listings-detail.png"><img src="../images/listings-detail.png" width="2750" height="1614" loading="lazy" alt="After: the parsed listing detail page in the listings app for one of the apartments from that email, showing rent, status, bedrooms, bathrooms, available date, building, neighborhood, and a description of the concessions. The landlord name is blurred."></a>
+        </figure>
+      </div>
+      <p class="pair-caption">Before and after: the landlord email next to the parsed listing detail page, landlord name, email and phone blurred</p>
+
+      <div class="pair">
+        <figure class="shot">
+          <a class="panel" href="../images/listings-building.png"><img src="../images/listings-building.png" width="2742" height="1626" loading="lazy" alt="Building page in the listings app showing building details, a summary, and a table of units with rent, beds and baths, status, and available date. The landlord name is blurred."></a>
+        </figure>
+        <figure class="shot">
+          <a class="panel" href="../images/listings-landlord.png"><img src="../images/listings-landlord.png" width="2750" height="1624" loading="lazy" alt="Landlord page in the listings app showing profile information, a summary, and a table of the landlord's buildings with active listings. The landlord name, company name, and email are blurred."></a>
+        </figure>
+      </div>
+      <p class="pair-caption">Building and landlord pages from the app, landlord names and emails blurred</p>
+    </section>
+
+    <section class="case-section" aria-labelledby="stack-h">
+      <div class="text">
+        <h2 id="stack-h" class="label">Stack</h2>
+        <p>Claude Code, Next.js, TypeScript, Supabase, Mapbox, Vercel.</p>
+      </div>
+    </section>
+
+    <section class="case-section" aria-labelledby="broke-h">
+      <div class="text">
+        <h2 id="broke-h" class="label">What broke and how I fixed it</h2>
+        <p>My first approach used one AI prompt to parse a landlord's file. It misread the layout and created bogus listings. I dropped the prompt for that source and built a dedicated parser for it.</p>
+      </div>
+    </section>
+  </main>
+
+  <nav class="case-nav" aria-label="Other systems">
+    <p><a href="../">Home</a> <a href="../outbound/">Outbound GTM system</a> <a href="../revops/">RevOps stack in Fibery</a></p>
+  </nav>
+</div>
+
+<footer class="closing on-ink">
+  <div class="closing-inner">
+    <section aria-labelledby="contact-h">
+      <h2 id="contact-h" class="label">Contact</h2>
+      <p class="big">Worth learning more?</p>
+      <p class="reach">Reach me at <a href="mailto:rachelfiegler@icloud.com">rachelfiegler@icloud.com</a> or <a href="https://linkedin.com/in/rachelfiegler">linkedin.com/in/rachelfiegler</a>.</p>
+    </section>
+    <section class="podcast" aria-labelledby="podcast-h">
+      <h2 id="podcast-h" class="label">Podcast</h2>
+      <p>I host Pinpointe Unfiltered. Episodes are on the <a href="https://www.youtube.com/@pinpointegroup/podcasts">Pinpointe Group YouTube channel</a>.</p>
+    </section>
+  </div>
+</footer>
+</body>
+</html>

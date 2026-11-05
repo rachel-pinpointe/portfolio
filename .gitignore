@@ -1,0 +1,4 @@
+# Source inputs with internal notes stay local
+Assets/
+assets/
+.DS_Store

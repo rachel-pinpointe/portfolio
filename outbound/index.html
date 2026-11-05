@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Outbound GTM system | Rachel Fiegler</title>
+<link rel="icon" href="data:,">
+<link rel="preload" href="../fonts/archivo-black-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="page">
+  <header class="topbar">
+    <a class="name" href="../">Rachel Fiegler</a>
+    <span class="tag">GTM systems / New York</span>
+  </header>
+
+  <main id="main">
+    <h1 class="case-title">Outbound GTM system: prospecting to sequencing, run by Claude Code</h1>
+    <p class="result"><strong>Result:</strong> 4% reply rate and $450K of the $580K direct pipeline, built and run by one person.</p>
+
+    <div class="diagram-wrap">
+      <div class="panel scroll" tabindex="0" role="region" aria-label="Outbound GTM system diagram, scrolls sideways on small screens">
+        <img src="../images/outbound.svg" width="1160" height="520" alt="Diagram of the outbound GTM system, from signal to sequence, with Fibery read and written at every step. Step 1, sources: Paradigm and funding newsletters via Zapier, plus the daily hypersignal-gtm signal scan. Step 2, qualify: an ICP check across about 1,500 companies. Step 3, find contacts: a waterfall of QuickEnrich, String, and Hunter for People Ops, Finance, and Recruiting that stops at an email. Step 4, research and write: Claude researches stated goals and writes a three-email sequence per contact. Step 5, guardrails then enroll: a 60-day contact gate and an Apollo activity check, then enrollment in an Apollo sequence. Step 6, positive reply: the lead is reviewed in Fibery. Step 7, promote: an hourly sync moves the lead into CRM Accounts and Contacts. Step 8, CRM: only leads who replied. Underneath, the Fibery GTM Pipeline is the system of record for signals, companies, contacts, and sequence status.">
+      </div>
+    </div>
+
+    <section class="case-section" aria-labelledby="problem-h">
+      <div class="text">
+        <h2 id="problem-h" class="label">Problem</h2>
+        <p>Pinpointe pivoted to B2B with no playbook and no sales team. Every prospect needed research, a reason to reach out, and a personalized email, and that didn't scale by hand.</p>
+      </div>
+    </section>
+
+    <section class="case-section" aria-labelledby="built-h">
+      <div class="text">
+        <h2 id="built-h" class="label">What I built</h2>
+        <p>An automated outbound system in Claude Code that runs the full motion:</p>
+        <ol>
+          <li><strong>Signals:</strong> tracks eight signal types (job postings, hiring velocity, funding, layoffs and WARN notices, tech stack changes, Meta ads, news, and other) to find NYC companies that look like they're sending people to New York.</li>
+          <li><strong>Enrichment:</strong> finds contacts for three personas (People Ops, Finance, Recruiting) through a waterfall of QuickEnrich, String, and Hunter that stops once it has an email.</li>
+          <li><strong>Messaging:</strong> Claude researches each company's stated goals and writes a custom three-email sequence for each contact.</li>
+          <li><strong>Sequencing:</strong> pushes contacts into Apollo sequences automatically, with no manual step between signal and send.</li>
+        </ol>
+      </div>
+      <figure class="shot">
+        <a class="panel" href="../images/fibery-signals.png"><img src="../images/fibery-signals.png" width="2736" height="1618" loading="lazy" alt="Screenshot of the Fibery Signals table. Signal names, companies, and some sources are blurred. The Signal Type column is visible, with values such as Funding, Hiring Velocity, and Layoff or WARN."></a>
+        <figcaption>Fibery Signals table with names, companies and sources blurred, signal types visible</figcaption>
+      </figure>
+    </section>
+
+    <section class="case-section" aria-labelledby="tracking-h">
+      <div class="text">
+        <h2 id="tracking-h" class="label">Tracking</h2>
+        <p>Fibery is the source of truth and tracker for the whole pipeline. Positive replies move into Contacts and Accounts in the CRM space.</p>
+      </div>
+    </section>
+
+    <section class="case-section" aria-labelledby="guard-h">
+      <div class="text">
+        <h2 id="guard-h" class="label">Guardrails and scale</h2>
+        <p>Contacts carry a 60-day re-sequence cooldown and a Do Not Contact status, so nobody gets emailed twice in a window or after opting out. The daily scan runs across about 1,500 companies.</p>
+      </div>
+      <figure class="shot">
+        <a class="panel" href="../images/fibery-contacts.png"><img src="../images/fibery-contacts.png" width="2748" height="1598" loading="lazy" alt="Screenshot of the Fibery Contacts table. Emails and likely priorities are blurred. Job titles are visible along with outreach status (Recently Contacted or Cleared to proceed), sequence status (Sequenced, Not Sequenced, or Do Not Contact), promotion status, and last sequenced date."></a>
+        <figcaption>Fibery Contacts table with emails and priorities blurred, showing the 60-day cooldown and Do Not Contact statuses</figcaption>
+      </figure>
+    </section>
+
+    <section class="case-section" aria-labelledby="stack-h">
+      <div class="text">
+        <h2 id="stack-h" class="label">Stack</h2>
+        <p>Claude Code, Apollo, Paradigm for lead lists, Lavender for email quality. Fibery as the source of truth and tracker. The agents run fully automated.</p>
+        <p>Code: <a href="https://github.com/rachel-pinpointe/signal-driven-outbound">signal-driven-outbound</a> and <a href="https://github.com/rachel-pinpointe/hypersignal-gtm">hypersignal-gtm</a>.</p>
+        <p>Built on the <a href="https://github.com/athm793/HyperSignal-Hiring">open-source HyperSignal-Hiring tool</a> (Apache 2.0).</p>
+      </div>
+    </section>
+
+    <section class="case-section" aria-labelledby="broke-h">
+      <div class="text">
+        <h2 id="broke-h" class="label">What broke and how I fixed it</h2>
+        <p>Hiring Cafe, one of the signal sources, kept blocking calls and runs dragged on for hours. I built a check that catches a stalled call and kills it, then uses the companies' ATS URLs to bypass the block when possible. I also added redundancy with other providers so one blocked source can't stall the pipeline.</p>
+      </div>
+    </section>
+  </main>
+
+  <nav class="case-nav" aria-label="Other systems">
+    <p><a href="../">Home</a> <a href="../listings/">NYC listings platform</a> <a href="../revops/">RevOps stack in Fibery</a></p>
+  </nav>
+</div>
+
+<footer class="closing on-ink">
+  <div class="closing-inner">
+    <section aria-labelledby="contact-h">
+      <h2 id="contact-h" class="label">Contact</h2>
+      <p class="big">Worth learning more?</p>
+      <p class="reach">Reach me at <a href="mailto:rachelfiegler@icloud.com">rachelfiegler@icloud.com</a> or <a href="https://linkedin.com/in/rachelfiegler">linkedin.com/in/rachelfiegler</a>.</p>
+    </section>
+    <section class="podcast" aria-labelledby="podcast-h">
+      <h2 id="podcast-h" class="label">Podcast</h2>
+      <p>I host Pinpointe Unfiltered. Episodes are on the <a href="https://www.youtube.com/@pinpointegroup/podcasts">Pinpointe Group YouTube channel</a>.</p>
+    </section>
+  </div>
+</footer>
+</body>
+</html>
