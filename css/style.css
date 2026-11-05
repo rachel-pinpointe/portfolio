@@ -93,7 +93,7 @@ a:focus-visible, [tabindex]:focus-visible { outline: 3px solid var(--ink); outli
 .hero h1 {
   font-family: var(--display);
   text-transform: uppercase;
-  font-size: clamp(56px, 11vw, 148px);
+  font-size: clamp(48px, 7.4vw, 104px);
   line-height: 0.9;
   letter-spacing: -0.04em;
 }
@@ -112,22 +112,34 @@ a:focus-visible, [tabindex]:focus-visible { outline: 3px solid var(--ink); outli
   margin: 72px 0 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   border: var(--rule);
 }
-.results li { padding: 40px; display: flex; flex-direction: column; gap: 12px; }
-.results li:nth-child(1), .results li:nth-child(3) { border-right: var(--rule); }
-.results li:nth-child(1), .results li:nth-child(2) { border-bottom: var(--rule); }
+.results li { padding: 36px; display: flex; flex-direction: column; gap: 12px; border-right: var(--rule); border-bottom: var(--rule); }
+.results li:nth-child(3n) { border-right: 0; }
+.results li:nth-last-child(-n+3) { border-bottom: 0; }
 .results .num {
   font-family: var(--display);
   text-transform: uppercase;
-  font-size: clamp(64px, 8.5vw, 128px);
+  font-size: clamp(38px, calc(7.4vw - 27px), 68px);
   line-height: 0.9;
   letter-spacing: -0.04em;
 }
 .results .lbl { font-size: 20px; line-height: 1.35; }
 .results .feature { background: var(--ink); color: var(--cream); }
 .results .feature .num { color: var(--butter); }
+
+/* How I sell */
+.sell { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 56px; align-items: start; }
+.sell-text p { font-size: 20px; }
+.sell-text .sell-close { font-weight: 700; margin-bottom: 0; }
+.sell-stats { background: var(--ink); color: var(--cream); padding: 32px; }
+.sell-stats .label { margin-bottom: 8px; }
+.sell-stats ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: max-content minmax(0, 1fr); column-gap: 20px; }
+.sell-stats li { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; align-items: baseline; padding: 16px 0; border-bottom: 3px solid var(--mist); }
+.sell-stats li:last-child { border-bottom: 0; padding-bottom: 0; }
+.sell-stats .num { font-family: var(--display); color: var(--butter); font-size: clamp(32px, 2.8vw, 40px); line-height: 1; letter-spacing: -0.03em; white-space: nowrap; grid-column: 1; }
+.sell-stats .lbl { font-size: 18px; line-height: 1.35; grid-column: 2; }
 
 /* Systems rows */
 .systems { border-top: var(--rule); }
@@ -225,9 +237,12 @@ figure { margin: 0; }
 /* Responsive */
 @media (max-width: 899px) {
   :root { --pad: 32px; }
-  .results { grid-template-columns: minmax(0, 1fr); }
-  .results li:nth-child(n) { border-right: 0; border-bottom: var(--rule); }
-  .results li:last-child { border-bottom: 0; }
+  .results { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .results li:nth-child(n) { border-right: var(--rule); border-bottom: var(--rule); }
+  .results li:nth-child(2n) { border-right: 0; }
+  .results li:nth-last-child(-n+2) { border-bottom: 0; }
+  .results .num { font-size: clamp(40px, calc(11vw - 26px), 64px); }
+  .sell { grid-template-columns: minmax(0, 1fr); gap: 40px; }
   .sys { grid-template-columns: minmax(0, 1fr); gap: 12px; padding: 28px 0; }
   .cols { grid-template-columns: minmax(0, 1fr); gap: 48px; }
   .pair { grid-template-columns: minmax(0, 1fr); }
@@ -239,11 +254,18 @@ figure { margin: 0; }
   :root { --pad: 20px; --shadow: 6px 6px 0 var(--ink); }
   .page { padding-top: 20px; }
   .hero { margin-top: 48px; }
-  .hero h1 { font-size: clamp(38px, 11.5vw, 56px); }
+  .hero h1 { font-size: clamp(34px, 9.4vw, 52px); }
   .lede { margin-top: 28px; }
   .results { margin-top: 48px; }
   .results li { padding: 24px 20px; }
+  .results { grid-template-columns: minmax(0, 1fr); }
+  .results li:nth-child(n) { border-right: 0; border-bottom: var(--rule); }
+  .results li:last-child { border-bottom: 0; }
   .results .num { font-size: clamp(44px, 14vw, 64px); }
+  .sell-stats { padding: 24px 20px; }
+  .sell-stats ul { grid-template-columns: minmax(0, 1fr); }
+  .sell-stats .num { font-size: 36px; margin-bottom: 4px; }
+  .sell-stats .lbl { grid-column: 1; }
   .results .lbl { font-size: 18px; }
   .sys .idx { font-size: 44px; }
   .panel { padding: 12px; }
